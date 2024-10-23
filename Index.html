@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letter and Number Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #6E72FC, #AD1DEB);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .dark-mode {
+            background: linear-gradient(135deg, #2C3E50, #4CA1AF);
+            color: #f4f4f9;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            transition: background-color 0.3s, color 0.3s;
+            text-align: center;
+        }
+
+        .dark-mode .container {
+            background-color: #2f3640;
+        }
+
+        .search-bar {
+            position: relative;
+            margin: 10px 0;
+            width: 100%;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            background-color: #f0f0f0;
+            transition: all 0.3s;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        .search-bar input:focus {
+            background-color: #ffffff;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.8);
+        }
+
+        .dark-mode .search-bar input {
+            background-color: #4f4f4f;
+            color: white;
+        }
+
+        .result-card {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .dark-mode .result-card {
+            background-color: #3b3b3b;
+            border: 1px solid #888;
+        }
+
+        .toggle-button {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 5px;
+            border-radius: 30px;
+            background-color: #007bff;
+            width: 70px;
+            height: 30px;
+            position: relative;
+            cursor: pointer;
+            margin-top: 15px;
+            align-self: center;
+        }
+
+        .toggle-button .switch {
+            background-color: white;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            transition: all 0.3s ease;
+            position: absolute;
+        }
+
+        .toggle-button.active {
+            background-color: #4caf50;
+        }
+
+        .toggle-button.active .switch {
+            transform: translateX(40px);
+        }
+
+        .notification {
+            position: absolute;
+            top: -50px;
+            right: 10px;
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            transition: top 0.5s ease;
+            display: none;
+        }
+
+        .notification.show {
+            display: block;
+            top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Notification Section -->
+        <div class="notification" id="notification">Search successful!</div>
+
+        <!-- Main App -->
+        <h1>Letter to Number</h1>
+        <div class="search-bar">
+            <input type="text" id="lettersInput" placeholder="Enter Letters (A-Z)" oninput="calculateLetterSum()" />
+        </div>
+        <div id="letterSumResult" class="result-card">
+            <span class="result-title">Result:</span> <span id="resultValue">0</span>
+        </div>
+        <div class="toggle-button" id="darkModeToggle" onclick="toggleDarkMode()">
+            <div class="switch"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
